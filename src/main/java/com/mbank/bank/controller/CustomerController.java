@@ -24,7 +24,6 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerDTO> createNewCustomer(@Validated @RequestBody CustomerDTO customerDTO) {
-        System.out.println("ADDED");
         customerService.createCustomer(mapper.map(customerDTO, CustomerEntity.class), customerDTO.getPassword());
         return ResponseEntity.ok(customerDTO);
     }
