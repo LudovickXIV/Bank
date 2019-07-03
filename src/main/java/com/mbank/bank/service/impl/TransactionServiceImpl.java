@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -36,6 +37,8 @@ public class TransactionServiceImpl implements TransactionService {
 		try {
 			emailService.sendMessageWithAttachment(new TransactionEntity(sendFrom, sendTarget, target.getAmount()));
 		} catch (MessagingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
