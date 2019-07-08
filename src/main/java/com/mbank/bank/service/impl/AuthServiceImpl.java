@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
     public String generateAccessToken(CustomerPasswordDto usernamePassword) throws NotFoundException {
         CredentialEntity credentialEntity = credentialRepository
                 .findByLogin(usernamePassword.getUsername().toLowerCase())
-                .orElseThrow(() -> new NotFoundException("User with login= " + usernamePassword.getUsername()+ " not found"));
+                .orElseThrow(() -> new NotFoundException("User with login = " + usernamePassword.getUsername()+ " not found"));
         validateUserPassword(usernamePassword.getPassword(), credentialEntity.getPassword());
         CustomerEntity customerEntity = credentialEntity.getCustomerEntity();
         return tokenService.createUserToken(customerEntity);

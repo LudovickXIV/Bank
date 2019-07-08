@@ -13,9 +13,14 @@ public class CustomerEntity {
     @Column(unique = true)
     private String email;
     private double money;
-//    @Column(name = "role" , insertable = false, updatable=false)
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(name = "enabled")
+    private boolean isEnabled;
+
+    public CustomerEntity() {
+        this.isEnabled = true;
+    }
 
     public Long getId() {
         return id;
@@ -55,5 +60,13 @@ public class CustomerEntity {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

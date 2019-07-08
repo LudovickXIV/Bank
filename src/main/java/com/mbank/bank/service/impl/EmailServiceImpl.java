@@ -1,5 +1,6 @@
 package com.mbank.bank.service.impl;
 
+import com.mbank.bank.EmailData;
 import com.mbank.bank.TransactionEntity;
 import com.mbank.bank.TransactionMessage;
 import com.mbank.bank.service.EmailService;
@@ -41,6 +42,15 @@ public class EmailServiceImpl implements EmailService {
 		message.setTo(transaction.getSendTo().getEmail());
 		message.setSubject(null);
 		message.setText(TransactionMessage.transactionHeader(transaction));
+		emailSender.send(message);
+	}
+
+	@Override
+	public void sendRegistrationConfirmEmail(EmailData emailData) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(emailData.getUserEmail());
+		message.setSubject(emailData.getSubject());
+		message.setText(emailData.getConfirmUrl());
 		emailSender.send(message);
 	}
 

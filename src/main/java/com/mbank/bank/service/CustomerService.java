@@ -8,4 +8,5 @@ public interface CustomerService {
     List<CustomerEntity> getAll();
     CustomerEntity getCustomerById(Long id);
     CustomerEntity createCustomer(CustomerEntity customerEntity, String password);
+    String validateVerificationToken(String token);
 }
