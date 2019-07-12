@@ -25,10 +25,12 @@ public class VerificationToken {
 
 	private Date expiryDate;
 
+	public VerificationToken() {}
+
 	public VerificationToken(String token, CustomerEntity user) {
 		this.token = token;
 		this.user = user;
-		this.calculateExpiryDate(60);
+		expiryDate = this.calculateExpiryDate(60);
 	}
 
 	private Date calculateExpiryDate(int expiryTimeInMinutes) {

@@ -19,7 +19,7 @@ public class CustomerEntity {
     private boolean isEnabled;
 
     public CustomerEntity() {
-        this.isEnabled = true;
+        this.isEnabled = false;
     }
 
     public Long getId() {

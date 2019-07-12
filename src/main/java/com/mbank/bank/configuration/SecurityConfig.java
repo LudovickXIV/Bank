@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/customer/**").permitAll()
+                .antMatchers("/customer/**").permitAll()
                 .anyRequest().authenticated();
         http
                 .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());
